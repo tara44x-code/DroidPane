@@ -1,0 +1,27 @@
+{
+  "name": "droidpane",
+  "version": "0.1.0",
+  "description": "Run Android apps on Windows like native apps: double-click an APK, get a desktop icon, each app in its own window.",
+  "main": "src/main/main.js",
+  "author": "DroidPane contributors",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test",
+    "dist": "electron-builder --win nsis portable"
+  },
+  "devDependencies": {
+    "electron": "^39.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "io.github.droidpane",
+    "productName": "DroidPane",
+    "files": ["src/**", "assets/**", "package.json"],
+    "win": { "icon": "assets/icon.ico", "target": ["nsis", "portable"] },
+    "nsis": { "oneClick": false, "perMachine": false, "allowToChangeInstallationDirectory": true },
+    "fileAssociations": [
+      { "ext": "apk", "name": "Android Package", "description": "Android app package", "icon": "assets/icon.ico" }
+    ]
+  }
+}

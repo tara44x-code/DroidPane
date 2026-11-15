@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: file: blob:; style-src 'self'; script-src 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DroidPane</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="glow g1"></div><div class="glow g2"></div>
+<div class="drag"></div>
+
+<aside class="side">
+  <div class="brand">
+    <img src="../../assets/icon.svg" alt="">
+    <div><b>DroidPane</b><span data-i18n="tagline"></span></div>
+  </div>
+  <nav id="nav">
+    <button data-view="apps" class="on">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7.500" height="7.500" rx="2"/><rect x="13.500" y="3" width="7.500" height="7.500" rx="2"/><rect x="3" y="13.500" width="7.500" height="7.500" rx="2"/><rect x="13.500" y="13.500" width="7.500" height="7.500" rx="2"/></svg>
+      <span data-i18n="navApps"></span>
+    </button>
+    <button data-view="runtime">
+      <svg viewBox="0 0 24 24"><rect x="6" y="2.500" width="12" height="19" rx="3"/><path d="M10.500 18h3"/></svg>
+      <span data-i18n="navRuntime"></span>
+    </button>
+    <button data-view="settings">
+      <svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>
+      <span data-i18n="navSettings"></span>
+    </button>
+  </nav>
+  <div class="pill" id="pill"><i></i><div><b id="pillTitle"></b><span id="pillSub"></span></div></div>
+</aside>
+
+<main>
+  <section id="view-apps" class="view on">
+    <header>
+      <div><h1 data-i18n="appsTitle"></h1><p id="appsCount"></p></div>
+      <div class="actions">
+        <label class="search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.500"/><path d="M16 16l4.500 4.500"/></svg>
+          <input id="search" type="search" autocomplete="off">
+        </label>
+        <button class="btn primary" id="add">
+          <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span data-i18n="addApk"></span>
+        </button>
+      </div>
+    </header>
+    <div id="grid" class="grid"></div>
+    <div id="empty" class="empty" hidden>
+      <div class="dropcard">
+        <div class="ring"><svg viewBox="0 0 24 24"><path d="M12 4v11M7.500 10.500L12 15l4.500-4.500M5 19.500h14"/></svg></div>
+        <h2 data-i18n="emptyTitle"></h2>
+        <p data-i18n="emptyText"></p>
+        <button class="btn primary" id="add2"><span data-i18n="chooseApk"></span></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="view-runtime" class="view">
+    <header>
+      <div><h1 data-i18n="runtimeTitle"></h1><p data-i18n="runtimeSub"></p></div>
+      <div class="actions"><button class="btn" id="refresh"><span data-i18n="refresh"></span></button></div>
+    </header>
+    <div class="scroll" id="runtimeBody"></div>
+  </section>
+
+  <section id="view-settings" class="view">
+    <header><div><h1 data-i18n="settingsTitle"></h1><p data-i18n="settingsSub"></p></div></header>
+    <div class="scroll" id="settingsBody"></div>
+  </section>
+</main>
+
+<div id="drop" class="drop" hidden><div><svg viewBox="0 0 24 24"><path d="M12 4v11M7.500 10.500L12 15l4.500-4.500M5 19.500h14"/></svg><b data-i18n="dropHere"></b></div></div>
+<div id="sheet" class="sheet" hidden></div>
+<div id="menu" class="menu" hidden></div>
+<div id="busy" class="busy" hidden><span class="spin"></span><b id="busyText"></b></div>
+<div id="toasts" class="toasts"></div>
+
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
